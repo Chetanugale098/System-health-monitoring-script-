@@ -1,0 +1,18 @@
+import shutil
+import os
+from datetime import datetime
+
+# Source directory to backup
+source_dir = '/path/to/source'
+
+# Destination directory (remote server or cloud storage)
+destination_dir = '/path/to/destination'
+
+# Perform backup
+try:
+    backup_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    backup_dir = os.path.join(destination_dir, f"backup_{backup_time}")
+    shutil.copytree(source_dir, backup_dir)
+    print("Backup successful:", backup_dir)
+except Exception as e:
+    print("Backup failed:", e)
